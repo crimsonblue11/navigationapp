@@ -1,13 +1,23 @@
 package com.example.Main;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 public class Node {
     private final double m_XPos;
     private final double m_YPos;
     private final int m_ID;
     private static int count = 0;
+    private final ArrayList<Node> links = new ArrayList<>();
+
+    public void AddLink(Node n) {
+        links.add(n);
+    }
+
+    public ArrayList<Node> GetLinks() {
+        return links;
+    }
 
     public int GetID() {
         return m_ID;
@@ -19,6 +29,10 @@ public class Node {
 
     public double GetY() {
         return m_YPos;
+    }
+
+    public static void ResetCount() {
+        count = 0;
     }
 
     public Node(GraphicsContext g, double x, double y) {
